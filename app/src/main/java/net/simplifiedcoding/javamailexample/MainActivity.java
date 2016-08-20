@@ -1,12 +1,7 @@
 package net.simplifiedcoding.javamailexample;
 
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,12 +12,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextEmail;
     private EditText editTextSubject;
     private EditText editTextMessage;
-
-    Button  btnAttachment;
-    String email, subject, message, attachmentFile;
-    Uri URI = null;
-    private static final int PICK_FROM_GALLERY = 101;
-    int columnIndex;
 
     //Send button
     private Button buttonSend,attachment;
@@ -40,48 +29,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Adding click listener
         buttonSend.setOnClickListener(this);
 
-        
-        //Deleting Code if not work attach file funcation
 
-        //Attachment button
+/*        //Attachment button
         attachment = (Button) findViewById(R.id.attach);
-        attachment.setOnClickListener(this);
-        
-        
-        //Deleting Code if not work attach file funcation
+        attachment.setOnClickListener(this);*/
     }
-
-
-
-
-
-    //Deleting Code if not work attach file funcation
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PICK_FROM_GALLERY && resultCode == RESULT_OK) {
-            /**
-             * Get Path
-             */
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            attachmentFile = cursor.getString(columnIndex);
-            Log.e("Attachment Path:", attachmentFile);
-            URI = Uri.parse("file://" + attachmentFile);
-            cursor.close();
-        }
-    }
-
-
-
-
-///Deleting Code if not work attach file funcation
-
-
 
 
     private void sendEmail() {
@@ -102,21 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         sendEmail();
     }
-
-
-    
-    //Deleting Code if not work attach file funcation
-    public void openGallery() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.putExtra("return-data", true);
-        startActivityForResult(
-                Intent.createChooser(intent, "Complete action using"),PICK_FROM_GALLERY);
-
-    }
-    
-    //Deleting Code if not work attach file funcation
 
 
 }

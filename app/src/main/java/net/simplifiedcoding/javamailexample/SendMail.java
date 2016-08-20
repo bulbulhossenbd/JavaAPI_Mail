@@ -27,6 +27,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     private String email;
     private String subject;
     private String message;
+    private String attachfile;
 
     //Progressdialog to show while sending email
     private ProgressDialog progressDialog;
@@ -38,6 +39,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
         this.email = email;
         this.subject = subject;
         this.message = message;
+
     }
 
     @Override
@@ -53,7 +55,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
         //Dismissing the progress dialog
         progressDialog.dismiss();
         //Showing a success message
-        Toast.makeText(context,"Message Sent",Toast.LENGTH_LONG).show();
+        Toast.makeText(context,"Message Successfully Sent",Toast.LENGTH_LONG).show();
     }
 
     @Override
